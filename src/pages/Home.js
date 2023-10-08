@@ -1,13 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
+import ComposeMail from '../components/ComposeMail';
 
 const Home = () => {
     return (
         <div>
-            <h1 className='text-4xl font-semibold mt-2 ml-2'>
-                Welcome to your
-                <span className='text-teal-400'>
-                    Mail Box
-                </span></h1>
+            <Header />
+            <ComposeMail />
         </div>
     )
 }

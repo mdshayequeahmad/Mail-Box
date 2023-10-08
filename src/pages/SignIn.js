@@ -15,7 +15,7 @@ const SignIn = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAnMPN2vLWVSbQVlcrmqWWlJkWz1IxbuQE",
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_API_KEY}`,
         {
           email: email,
           password: password,

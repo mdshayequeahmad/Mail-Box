@@ -11,9 +11,12 @@ export const mailBoxSlice = createSlice({
         addUser: (state, action) => {
             state.userInfo = action.payload;
         },
+        removeUser: (state) => {
+            state.userInfo = null;
+        },
     }
 });
 
-export const { addUser, } = mailBoxSlice.actions;
+export const { addUser, removeUser } = mailBoxSlice.actions;
 
 export default mailBoxSlice.reducer;

@@ -41,7 +41,7 @@ const ComposeMail = () => {
 
     return (
         <div>
-            <div className='mt-6 mr-20 ml-48'>
+            <div className='mt-6 mr-20 ml-10'>
                 <div className='mt-8'>
                     <div className='bg-gray-800 mt-5 mb-5 h-[1px]'></div>
                     <label className='text-2xl text-slate-400 mx-3'>To:</label>

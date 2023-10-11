@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from '../components/Header';
-import ComposeMail from '../components/ComposeMail';
 import Sidenav from '../components/Sidenav';
+import Emails from '../components/Emails';
 
-const Home = () => {
+const Inbox = () => {
     return (
         <div>
             <Header />
@@ -12,11 +12,11 @@ const Home = () => {
                     <Sidenav />
                 </div>
                 <div className='w-4/5'>
-                    <ComposeMail />
+                    <Emails />
                 </div>
             </div>
         </div>
     )
 }
 
-export default Home;
+export default Inbox;

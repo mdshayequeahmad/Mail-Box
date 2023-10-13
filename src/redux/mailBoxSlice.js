@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     userInfo: null,
+    emailData: [],
 }
 
 export const mailBoxSlice = createSlice({
@@ -14,9 +15,13 @@ export const mailBoxSlice = createSlice({
         removeUser: (state) => {
             state.userInfo = null;
         },
+        addEmails: (state, action) => {
+            state.emailData = [];
+            state.emailData.push(action.payload);
+        },
     }
 });
 
-export const { addUser, removeUser } = mailBoxSlice.actions;
+export const { addUser, removeUser, addEmails } = mailBoxSlice.actions;
 
 export default mailBoxSlice.reducer;

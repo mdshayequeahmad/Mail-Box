@@ -6,6 +6,7 @@ import SignIn from './pages/SignIn';
 import { useSelector } from 'react-redux';
 import Inbox from './pages/Inbox';
 import Email from './pages/Email';
+import Sent from './pages/Sent';
 
 const App = () => {
 
@@ -42,6 +43,14 @@ const App = () => {
           element={
             <PrivateRoute>
               <Email />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/sent"
+          element={
+            <PrivateRoute>
+              <Sent />
             </PrivateRoute>
           }
         />

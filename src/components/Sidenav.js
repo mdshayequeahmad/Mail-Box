@@ -1,5 +1,6 @@
 import React from 'react';
 import { RiUser2Fill } from 'react-icons/ri';
+import { BiSend } from 'react-icons/bi';
 import { MdForwardToInbox } from 'react-icons/md';
 import { HiMiniPlus } from 'react-icons/hi2';
 import { useSelector } from 'react-redux';
@@ -18,7 +19,7 @@ const Sidenav = () => {
             </div>
             <p className='text-xl pl-3 pt-1'>{email}</p>
             <div>
-                <Link to="/"> 
+                <Link to="/">
                     <div className='flex items-center ml-3 mt-6'>
                         <HiMiniPlus className='text-2xl font-semibold mr-1 text-cyan-500' />
                         <h1 className='text-2xl font-semibold text-cyan-500'>New Mail</h1>
@@ -30,6 +31,14 @@ const Sidenav = () => {
                     <div className='flex items-center ml-3 mt-6'>
                         <MdForwardToInbox className='text-2xl font-semibold mr-1 text-cyan-500' />
                         <h1 className='text-2xl font-semibold text-cyan-500'>Inbox</h1>
+                    </div>
+                </Link>
+            </div>
+            <div>
+                <Link to="/sent">
+                    <div className='flex items-center ml-3 mt-6'>
+                        <BiSend className='text-2xl font-semibold mr-1 text-cyan-500' />
+                        <h1 className='text-2xl font-semibold text-cyan-500'>Sent</h1>
                     </div>
                 </Link>
             </div>

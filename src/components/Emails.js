@@ -4,7 +4,7 @@ import parse from "html-react-parser";
 import { MdDeleteForever } from "react-icons/md";
 import { BsCircleFill, BsCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { addEmails } from "../redux/mailBoxSlice";
+import { addInboxEmails } from "../redux/mailBoxSlice";
 import axios from "axios";
 
 const Emails = () => {
@@ -44,7 +44,7 @@ const Emails = () => {
 
                 setMails(newData);
 
-                dispatch(addEmails(newData));
+                dispatch(addInboxEmails(newData));
             } catch (error) {
                 console.log(error);
             }

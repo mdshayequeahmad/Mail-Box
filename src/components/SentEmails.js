@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addSentEmails } from '../redux/mailBoxSlice';
 import parse from 'html-react-parser';
-import { MdDeleteForever } from "react-icons/md";
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const SentEmails = () => {
 
@@ -11,15 +10,6 @@ const SentEmails = () => {
     const user = useSelector((state) => state.mailBox.userInfo);
     const { email } = user;
     const dispatch = useDispatch();
-
-    const deleteEmailHandler = async (id) => {
-        try {
-            await axios.delete(`https://mail-box-ea5a1-default-rtdb.firebaseio.com/users/${email.slice(0, -4,)}/sent/${id}.json`);
-            console.log("Email has been deleted.");
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     useEffect(() => {
         const getData = async () => {
@@ -57,19 +47,12 @@ const SentEmails = () => {
                     key={item.id}
                     className="flex justify-between mt-5 px-5 py-2 bg-slate-100 rounded-xl"
                 >
-                    <div className="flex items-center">
+                    <Link to={`/sent/${item.id}`}>
                         <div className="mx-8">
-                            <h1 className='text-xl'>{item.subject}</h1>
-                            <p className="text-lg font-semibold mb-3">{item.to}</p>
+                            <p className="text-lg font-semibold mb-1">{item.to}</p>
                             {parse(`<p>${item.mail}</p>`)}
                         </div>
-                    </div>
-                    <button className="text-4xl">
-                        <MdDeleteForever
-                            onClick={() => deleteEmailHandler(item.id)}
-                            className="text-red-500"
-                        />
-                    </button>
+                    </Link>
                 </div>
             ))}
         </div>

@@ -25,34 +25,38 @@ const Emails = () => {
         }
     };
 
-
-
     useEffect(() => {
-        const getData = async () => {
-            try {
-                const result = await fetch(`https://mail-box-ea5a1-default-rtdb.firebaseio.com/users/${email.slice(0, -4,)}/inbox.json`);
-                const data = await result.json();
+        const interval = setInterval(() => {
+            const getData = async () => {
+                try {
+                    const result = await fetch(`https://mail-box-ea5a1-default-rtdb.firebaseio.com/users/${email.slice(0, -4,)}/inbox.json`);
+                    const data = await result.json();
 
-                const newData = [];
-                for (const key in data) {
-                    newData.push({
-                        id: key,
-                        from: data[key].from,
-                        subject: data[key].subject,
-                        mail: data[key].mail,
-                        emailRead: data[key].emailRead,
-                    });
+                    const newData = [];
+                    for (const key in data) {
+                        newData.push({
+                            id: key,
+                            from: data[key].from,
+                            subject: data[key].subject,
+                            mail: data[key].mail,
+                            emailRead: data[key].emailRead,
+                        });
+                    }
+
+                    setMails(newData);
+
+                    dispatch(addInboxEmails(newData));
+                } catch (error) {
+                    console.log(error);
                 }
+            };
 
-                setMails(newData);
+            getData();
+        }, 2000);
 
-                dispatch(addInboxEmails(newData));
-            } catch (error) {
-                console.log(error);
-            }
+        return () => {
+            clearInterval(interval);
         };
-
-        getData();
     }, [email, dispatch]);
 
     return (

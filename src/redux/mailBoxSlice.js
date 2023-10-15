@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     userInfo: null,
-    inboxEmail: [],
-    sentEmail: [],
+    inboxEmail: null,
+    sentEmail: null,
 }
 
 export const mailBoxSlice = createSlice({
@@ -17,12 +17,10 @@ export const mailBoxSlice = createSlice({
             state.userInfo = null;
         },
         addInboxEmails: (state, action) => {
-            state.inboxEmail = [];
-            state.inboxEmail.push(action.payload);
+            state.inboxEmail = action.payload;
         },
         addSentEmails: (state, action) => {
-            state.sentEmail = [];
-            state.sentEmail.push(action.payload);
+            state.sentEmail = action.payload;
         },
     }
 });

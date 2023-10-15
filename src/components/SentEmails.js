@@ -36,7 +36,7 @@ const SentEmails = () => {
         };
 
         getData();
-    }, [mails, email, dispatch]);
+    }, [email, dispatch]);
 
     return (
         <div className='mt-8 mx-20'>

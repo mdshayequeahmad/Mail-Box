@@ -9,7 +9,7 @@ const SentEmailCard = () => {
 
     const { id } = useParams();
     const sentEmail = useSelector((state) => state.mailBox.sentEmail);
-    const item = sentEmail.flat().find((item) => (item.id === id));
+    const item = sentEmail.find((item) => (item.id === id));
     const { to, subject, mail } = item;
 
     const userInfo = useSelector((state) => state.mailBox.userInfo);

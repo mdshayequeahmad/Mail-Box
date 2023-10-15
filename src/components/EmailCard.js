@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const EmailCard = ({ id }) => {
 
     const inboxEmail = useSelector((state) => state.mailBox.inboxEmail);
-    const item = inboxEmail.flat().find((item) => (item.id === id));
+    const item = inboxEmail.find((item) => (item.id === id));
     const { from, subject, mail } = item;
 
     const userInfo = useSelector((state) => state.mailBox.userInfo);

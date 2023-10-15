@@ -25,6 +25,8 @@ const Emails = () => {
         }
     };
 
+
+
     useEffect(() => {
         const getData = async () => {
             try {
@@ -51,7 +53,7 @@ const Emails = () => {
         };
 
         getData();
-    }, [mails, email, dispatch]);
+    }, [email, dispatch]);
 
     return (
         <div className="mx-20 mt-8">

@@ -15,20 +15,22 @@ const ComposeMail = () => {
 
     const submitHandler = async () => {
         try {
-            await axios.post(`https://mail-box-ea5a1-default-rtdb.firebaseio.com/users/${to.slice(0, -4)}/inbox.json`,
-                {
-                    from: email,
-                    subject: subject,
-                    mail: mail
-                });
+            const promises = [
+                axios.post(`https://mail-box-ea5a1-default-rtdb.firebaseio.com/users/${to.slice(0,-4)}/inbox.json`,
+                    {
+                        from: email,
+                        subject: subject,
+                        mail: mail
+                    }),
+                axios.post(`https://mail-box-ea5a1-default-rtdb.firebaseio.com/users/${email.slice(0,-4)}/sent.json`,
+                    {
+                        to: to,
+                        subject: subject,
+                        mail: mail
+                    })
+            ];
 
-            await axios.post(`https://mail-box-ea5a1-default-rtdb.firebaseio.com/users/${email.slice(0, -4)}/sent.json`,
-                {
-                    to: to,
-                    subject: subject,
-                    mail: mail
-                });
-
+            await axios.all(promises);
             console.log("Email has been sent!");
         } catch (error) {
             console.log(error);
